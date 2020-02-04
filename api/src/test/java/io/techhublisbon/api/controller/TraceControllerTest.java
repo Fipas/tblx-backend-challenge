@@ -28,12 +28,12 @@ public class TraceControllerTest {
 	MockMvc mockMvc;
 
 	@MockBean
-	private TraceService tarceService;
+	private TraceService traceService;
 
 	@BeforeEach
 	public void setUp() {
 		final List<Trace> traces = List.of(new Trace(), new Trace());
-		Mockito.when(tarceService.getByTimeframeBetweenAndVehicleId(Mockito.any(LocalDate.class),
+		Mockito.when(traceService.getByTimeframeBetweenAndVehicleId(Mockito.any(LocalDate.class),
 				Mockito.any(LocalDate.class), Mockito.anyLong())).thenReturn(traces);
 	}
 
