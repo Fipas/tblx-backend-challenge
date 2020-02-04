@@ -6,11 +6,29 @@ PORT=9200
 URL="http://elasticsearch:$PORT"
 
 # Check that Elasticsearch is running
-curl -s $URL 2>&1 > /dev/null
-
-while [ $? != 0 ]; do
-    curl -s $URL 2>&1 > /dev/null
-    sleep 2
+until $(curl --output /dev/null --silent --head --fail "$URL"); do
+    printf '.'
+    sleep 1
 done
+
+response=$(curl $URL)
+
+until [ "$response" = "200" ]; do
+    response=$(curl --write-out %{http_code} --silent --output /dev/null "$URL")
+    echo "Elastic Search is unavailable - sleeping"
+    sleep 1
+done
+
+health="$(curl -fsSL "$URL/_cat/health?h=status")"
+health="$(echo "$health" | sed -r 's/^[[:space:]]+|[[:space:]]+$//g')"
+
+until [ "$health" = 'green' ]; do
+    health="$(curl -fsSL "$URL/_cat/health?h=status")"
+    health="$(echo "$health" | sed -r 's/^[[:space:]]+|[[:space:]]+$//g')"
+    echo "Elastic Search is unavailable - sleeping"
+    sleep 1
+done
+
+echo "Elastic Search is up"
 
 java -jar /user/share/api-jar/api-0.0.1-SNAPSHOT.jar
