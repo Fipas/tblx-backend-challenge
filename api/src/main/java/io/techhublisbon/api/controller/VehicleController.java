@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.AssertTrue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -30,7 +31,7 @@ public class VehicleController {
 			@RequestParam(name = "startTime", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startTime,
 			@RequestParam(name = "endTime", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endTime,
 			@RequestParam(name = "operator", required = true) @Valid Operator operator,
-			@RequestParam(name = "atStop", required = false) Boolean atStop) {
+			@RequestParam(name = "atStop", required = false) @AssertTrue Boolean atStop) {
 		
 		if (atStop != null && atStop) {
 			return vehicleService.getByTimeframeBetweenAndOperator(startTime, endTime, operator, true);

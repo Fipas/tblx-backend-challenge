@@ -19,7 +19,7 @@ public class OperatorController {
 
 	@Autowired
 	private OperatorService operatorService;
-
+	
 	@GetMapping
 	public List<Operator> list(
 			@RequestParam(name = "startTime", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startTime,

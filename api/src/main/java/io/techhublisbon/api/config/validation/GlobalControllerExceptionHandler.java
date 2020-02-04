@@ -1,6 +1,8 @@
 package io.techhublisbon.api.config.validation;
 
+import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import javax.validation.Path.Node;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MissingServletRequestParameterException;
@@ -25,7 +27,7 @@ public class GlobalControllerExceptionHandler {
 		} else if (paramName.equals("operator")) {
 			message = paramName + " must be a string with 2 characters";
 		} else if (paramName.equals("atStop")) {
-			message = paramName + ", if present, must be a boolean";
+			message = paramName + ", if present, must be true";
 		} else {
 			message = "Unsupported param";
 		}
@@ -45,6 +47,18 @@ public class GlobalControllerExceptionHandler {
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(ConstraintViolationException.class)
 	public ParamError handleViolation(ConstraintViolationException exception) {
-		return new ParamError("operator", "operator must be a string with 2 characters");
+		ConstraintViolation<?> violation = exception.getConstraintViolations().iterator().next();
+		String field = null;
+
+		for (Node node : violation.getPropertyPath()) {
+			field = node.getName();
+			if (field.equals("operator")) {
+				return new ParamError(field, "operator must be a string with 2 characters");
+			} else if (field.equals("atStop")) {
+				return new ParamError(field, "atStop, if present, must be true");
+			}
+		}
+
+		return new ParamError(field, "Unsupported param");
 	}
 }

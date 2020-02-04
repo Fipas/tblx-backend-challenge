@@ -1,0 +1,37 @@
+version: "3"
+services:
+  elasticsearch:
+    image: elasticsearch:7.5.2
+    container_name: elasticsearch
+    environment:
+      - node.name=elastisearch
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - api
+
+  logstash:
+    image: logstash:7.5.2
+    container_name: logstash
+    volumes:
+      - ${PWD}/data:/user/share/logstash/data
+    command: logstash -f /user/share/logstash/data/logstash_traces.config
+    links:
+      - elasticsearch
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - api
+    depends_on:
+      - elasticsearch
+
+networks:
+  api:
+    driver: bridge
