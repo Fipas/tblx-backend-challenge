@@ -26,7 +26,7 @@ The goal of this challenge is to build a web service that exposes Vehicle, Opera
 # Getting started
 
 To be apple to run this project, docker and docker-compose are required.\
-For more information about how to install docker, please visit https://docs.docker.com/install/\
+For more information about how to install docker, please visit https://docs.docker.com/install/ \
 For more information about how to install docker-compose, please visit https://docs.docker.com/compose/install/
 
 # Running this project
@@ -38,8 +38,8 @@ For more information about how to install docker-compose, please visit https://d
 
 # Folder structure
 
-The code of the web service is located at `api/`\
-The jar generated is located at `api-jar/`. It is there for Docker Compose use.
+The code of the web service is located at `api/` \
+The jar generated is located at `api-jar/`. It is there for Docker Compose use. \
 The folder `data/` contain the data sample used and the logstash file configuration used to load the sample into elasticsearch.
 
 # Routes exposed
