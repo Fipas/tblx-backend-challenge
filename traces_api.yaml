@@ -1,0 +1,152 @@
+_type: export
+__export_format: 4
+__export_date: 2020-02-04T03:07:00.794Z
+__export_source: insomnia.desktop.app:v6.6.2
+resources:
+  - _id: req_f66f519c5eb64881a5c7ac6479092970
+    authentication: {}
+    body: {}
+    created: 1580714102600
+    description: ""
+    headers: []
+    isPrivate: false
+    metaSortKey: -1580714102600
+    method: GET
+    modified: 1580785401950
+    name: Get operators by timeframe range
+    parameters:
+      - id: pair_ac00123576fc48a0a4de480dca801c91
+        name: startTime
+        value: 2012-11-10
+      - id: pair_aa77367d7fb34fc29766fd8b356ea005
+        name: endTime
+        value: 2012-11-11
+    parentId: wrk_68e57038d4bd47de82076cdc0326598b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:8080/operators
+    _type: request
+  - _id: wrk_68e57038d4bd47de82076cdc0326598b
+    created: 1580531838748
+    description: ""
+    modified: 1580714408999
+    name: tb.lx backend challenge api
+    parentId: null
+    _type: workspace
+  - _id: req_901f6b94c1ba4b38bff62618aaed32f7
+    authentication: {}
+    body: {}
+    created: 1580713793576
+    description: ""
+    headers:
+      - id: pair_32b458fad7184ed7b3758d2668911ac5
+        name: Accept-Language
+        value: de-CH
+    isPrivate: false
+    metaSortKey: -1580714092559
+    method: GET
+    modified: 1580785512942
+    name: Get vehicles by timeframe range and operator
+    parameters:
+      - disabled: false
+        id: pair_c114e65b331844c9996db385c963d804
+        name: startTime
+        value: 2012-11-10
+      - id: pair_a7433750111b4f6fb0a6252a88d18334
+        name: endTime
+        value: 2012-11-11
+      - id: pair_db0d781cfc4d42d09e808e48ac326499
+        name: operator
+        value: PO
+    parentId: wrk_68e57038d4bd47de82076cdc0326598b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:8080/vehicles
+    _type: request
+  - _id: req_a224f4a529db4cdc81ae2ffb5c5fd3d0
+    authentication: {}
+    body: {}
+    created: 1580714082518
+    description: ""
+    headers: []
+    isPrivate: false
+    metaSortKey: -1580714082518
+    method: GET
+    modified: 1580785467201
+    name: Get vehicles by timeframe range, operator and at stop
+    parameters:
+      - id: pair_840dccc5312b4ed7907eb715f8ea13c8
+        name: startTime
+        value: 2012-11-10
+      - id: pair_4dbc96f6968e497fa5fc6fe1a31b9040
+        name: endTime
+        value: 2012-11-11
+      - disabled: false
+        id: pair_99f9ae3e9a6a42b4b855747351c8bb1e
+        name: atStop
+        value: "true"
+      - disabled: false
+        id: pair_7e10dd9f0dc94569a2efcc48a63643dc
+        name: operator
+        value: PO
+    parentId: wrk_68e57038d4bd47de82076cdc0326598b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:8080/vehicles
+    _type: request
+  - _id: req_2606eb2b5f6b4e3b8d816c3ab600ea70
+    authentication: {}
+    body: {}
+    created: 1580531862157
+    description: ""
+    headers: []
+    isPrivate: false
+    metaSortKey: -1580531862158
+    method: GET
+    modified: 1580785478980
+    name: Get traces by timeframe range and vehicle id
+    parameters:
+      - id: pair_da7419dfc9d449d69436e60abdd6e395
+        name: startTime
+        value: 2012-11-10
+      - id: pair_b65f8c2d8eaf4602919c7b7dcf682b0f
+        name: endTime
+        value: 2012-11-11
+      - id: pair_9e1f74304fb645ada8ecdf86ee0bd8a6
+        name: vehicleId
+        value: "33438"
+    parentId: wrk_68e57038d4bd47de82076cdc0326598b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:8080/traces
+    _type: request
+  - _id: env_c65c4117ad3e8df0dca2c50c410c37e23a105371
+    color: null
+    created: 1580531838812
+    data: {}
+    dataPropertyOrder: null
+    isPrivate: false
+    metaSortKey: 1580531838812
+    modified: 1580531838812
+    name: Base Environment
+    parentId: wrk_68e57038d4bd47de82076cdc0326598b
+    _type: environment
+  - _id: jar_c65c4117ad3e8df0dca2c50c410c37e23a105371
+    cookies: []
+    created: 1580531838816
+    modified: 1580531838816
+    name: Default Jar
+    parentId: wrk_68e57038d4bd47de82076cdc0326598b
+    _type: cookie_jar
