@@ -48,16 +48,16 @@ More information about the API exposed can be found at http://localhost:8080/swa
 
 ## Get operators by timeframe range
 
-GET `/operators/startTime=2012-11-10&endTime=2012-11-11`
+GET `/operators?startTime=2012-11-10&endTime=2012-11-11`
 
 ## Get vehicles by timeframe range and operator
 
-GET `/vehicles/startTime=2012-11-10&endTime=2012-11-11&operator=PO`
+GET `/vehicles?startTime=2012-11-10&endTime=2012-11-11&operator=PO`
 
 ## Get vehicles by timeframe range, operator and at stop
 
-GET `/vehicles/startTime=2012-11-10&endTime=2012-11-11&operator=PO&atStop=true`
+GET `/vehicles?startTime=2012-11-10&endTime=2012-11-11&operator=PO&atStop=true`
 
 ## Get traces by timeframe range and vehicle id
 
-GET `/traces/startTime=2012-11-10&endTime=2012-11-11&vehicleId=33438`
+GET `/traces?startTime=2012-11-10&endTime=2012-11-11&vehicleId=33438`
