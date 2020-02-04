@@ -13,7 +13,6 @@ services:
         hard: -1
     ports:
       - 9200:9200
-      - 9300:9300
     networks:
       - api
 
@@ -22,11 +21,27 @@ services:
     container_name: logstash
     volumes:
       - ${PWD}/data:/user/share/logstash/data
-    command: logstash -f /user/share/logstash/data/logstash_traces.config
-    links:
-      - elasticsearch
+    command: >
+      sh -c "chmod +x /user/share/logstash/data/initialize_logstash.sh &&
+             /user/share/logstash/data/initialize_logstash.sh"
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - api
+    depends_on:
+      - elasticsearch
+
+
+  api-server:
+    image: openjdk:8-jdk-alpine
+    container_name: api-server
+    volumes:
+      - ${PWD}/api-jar:/user/share/api-jar
+    command: >
+      sh -c "chmod +x /user/share/api-jar/initialize_server.sh &&
+             /user/share/api-jar/initialize_server.sh"
+    ports:
+      - 8080:8080
     networks:
       - api
     depends_on:

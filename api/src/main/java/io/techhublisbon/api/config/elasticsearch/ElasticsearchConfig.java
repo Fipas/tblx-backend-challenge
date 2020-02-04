@@ -17,7 +17,8 @@ public class ElasticsearchConfig extends AbstractElasticsearchConfiguration {
 
 	@Override
 	public RestHighLevelClient elasticsearchClient() {
-		return RestClients.create(ClientConfiguration.create("localhost:9200")).rest();
+		// Change to localhost if running locally
+		return RestClients.create(ClientConfiguration.create("elasticsearch:9200")).rest();
 	}
 
 	@Bean
