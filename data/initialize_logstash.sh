@@ -20,7 +20,7 @@ done
 health="$(curl -fsSL "$URL/_cat/health?h=status")"
 health="$(echo "$health" | sed -r 's/^[[:space:]]+|[[:space:]]+$//g')"
 
-until [ "$health" = 'green' ]; do
+until [[ "$health" == "green" || "$health" == "yellow" ]]; do
     health="$(curl -fsSL "$URL/_cat/health?h=status")"
     health="$(echo "$health" | sed -r 's/^[[:space:]]+|[[:space:]]+$//g')"
     echo "Elastic Search is unavailable - sleeping"
