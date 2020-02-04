@@ -60,4 +60,4 @@ GET `/vehicles/startTime=2012-11-10&endTime=2012-11-11&operator=PO&atStop=true`
 
 ## Get traces by timeframe range and vehicle id
 
-GET `/tarces/startTime=2012-11-10&endTime=2012-11-11&atStop=33438`
+GET `/traces/startTime=2012-11-10&endTime=2012-11-11&vehicleId=33438`
