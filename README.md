@@ -32,7 +32,7 @@ For more information about how to install docker-compose, please visit https://d
 # Running this project
 
 1. Make sure you have [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/) installed
-2. Close this repository
+2. Clone this repository
 3. Run `docker-compose up` to start the service. This may take a few minutes since images for elastichsearch, logstash and linux alpine need to be downloaded. Also, since the data sample used is quite large, it may take a few minutes as well for logstash to fully load it into elastichsearch.
 4. Access http://localhost:8080/swagger-ui.html to view the API documentation. You can also test the API at this URL. If you prefer, you can use `traces_api.yaml` to load route definition into your client of choice (Insomnia, Postman, etc)
 
